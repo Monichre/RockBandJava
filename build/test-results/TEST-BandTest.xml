@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="BandTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2016-05-13T17:37:19" hostname="Liams-MacBook-Air.local" time="0.662">
+<testsuite name="BandTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2016-05-13T19:00:18" hostname="Liams-MacBook-Air.local" time="0.785">
   <properties/>
-  <testcase name="Band_instantiates_Correctly" classname="BandTest" time="0.337"/>
-  <testcase name="Band_allReturnsAllBands" classname="BandTest" time="0.145"/>
-  <testcase name="Band_savesToDatabase" classname="BandTest" time="0.038"/>
-  <testcase name="Band_getNameReturnsName" classname="BandTest" time="0.041"/>
-  <testcase name="save_assignsIdToObject" classname="BandTest" time="0.04"/>
-  <testcase name="Band_findReturnsBand" classname="BandTest" time="0.06"/>
+  <testcase name="all_returnsAllBands" classname="BandTest" time="0.475"/>
+  <testcase name="Band_instantiates_Correctly" classname="BandTest" time="0.015"/>
+  <testcase name="save_addsToDatabase" classname="BandTest" time="0.035"/>
+  <testcase name="save_assignsIdToObject" classname="BandTest" time="0.037"/>
+  <testcase name="addTask_addVenuestoBand" classname="BandTest" time="0.077"/>
+  <testcase name="getName_returnsName" classname="BandTest" time="0.044"/>
+  <testcase name="find_returnsBand" classname="BandTest" time="0.033"/>
+  <testcase name="getVenues_returnsAllVenues_List" classname="BandTest" time="0.067"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

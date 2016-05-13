@@ -1,5 +1,6 @@
 
 import org.sql2o.*;
+import java.util.*;
 import org.junit.*;
 import static org.junit.Assert.*;
 
@@ -15,14 +16,14 @@ public class BandTest {
 	}
 
 	@Test 
-	public void Band_getNameReturnsName(){
+	public void getName_returnsName(){
 		Band newBand = new Band("Incubus");
 		newBand.save();
 		assertEquals("Incubus", Band.all().get(0).getName());
 	}
 
 	@Test 
-	public void Band_savesToDatabase(){
+	public void save_addsToDatabase(){
 		Band newBand = new Band("Incubus");
 		newBand.save();
 		assertEquals(newBand, Band.all().get(0));
@@ -36,9 +37,8 @@ public class BandTest {
 		assertEquals(myBand.getId(), savedBand.getId());
 	}
 
-
 	@Test 
-	public void Band_allReturnsAllBands(){
+	public void all_returnsAllBands(){
 		Band newBand = new Band("Incubus");
 		newBand.save();
 		Band newBand2 = new Band("Foals");
@@ -47,10 +47,32 @@ public class BandTest {
 	}
 
 	@Test 
-	public void Band_findReturnsBand(){
+	public void find_returnsBand(){
 		Band newBand = new Band("Incubus");
 		newBand.save();
 		assertEquals(newBand, Band.findBand(newBand.getId()));
+	}
+
+	@Test
+	public void addTask_addVenuestoBand() {
+		Band myBand = new Band("Fleet Foxes");
+		myBand.save();
+		Venue myVenue = new Venue("Red Rocks", "Denver");
+		myVenue.save();
+		myBand.addVenue(myVenue);
+		Venue savedVenue = myBand.getVenues().get(0);
+		assertTrue(myVenue.equals(savedVenue));
+	}
+
+	@Test
+	public void getVenues_returnsAllVenues_List() {
+		Band myBand = new Band("Fleet Foxes");
+		myBand.save();
+		Venue myVenue = new Venue("Red Rocks", "Denver");
+		myVenue.save();
+		myBand.addVenue(myVenue);
+		List savedVenues = myBand.getVenues();
+		assertEquals(1, savedVenues.size());
 	}
 
 }
