@@ -39,4 +39,12 @@ public class Band {
 			.getKey();
     	}
 	}
+
+	public static List<Band> all(){
+		try(Connection con = DB.sql2o.open()) {
+			String sql = "SELECT id, name FROM bands";
+			return con.createQuery(sql)
+			.executeAndFetch(Band.class);
+		}
+	}
 }
