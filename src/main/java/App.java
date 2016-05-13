@@ -58,7 +58,6 @@ public class App {
         newVenueObject.save();
         newBand.addVenue(newVenueObject);
         model.put("newBand", newBand);
-        model.put("newVenue", newVenueObject);
         model.put("template", "templates/bandpage.vtl");
         return new ModelAndView(model, "templates/layout.vtl");
       }, new VelocityTemplateEngine());
