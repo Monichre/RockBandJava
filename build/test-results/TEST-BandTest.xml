@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="BandTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2016-05-13T17:10:50" hostname="Liams-MacBook-Air.local" time="0.41">
+  <properties/>
+  <testcase name="Band_Instantiates_Correctly" classname="BandTest" time="0.41"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
