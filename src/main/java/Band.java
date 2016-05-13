@@ -47,4 +47,15 @@ public class Band {
 			.executeAndFetch(Band.class);
 		}
 	}
+
+	public static Band findBand(int id){
+		try(Connection con = DB.sql2o.open()) {
+			String sql = "SELECT * FROM bands WHERE id = :id";
+			Band band = con.createQuery(sql)
+			.addParameter("id", id)
+			.executeAndFetchFirst(Band.class);
+			return band;
+		}
+
+	}
 }

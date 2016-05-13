@@ -28,6 +28,15 @@ public class BandTest {
 		assertEquals(newBand, Band.all().get(0));
 	}
 
+	@Test
+	public void save_assignsIdToObject() {
+		Band myBand = new Band("Incubus");
+		myBand.save();
+		Band savedBand = Band.all().get(0);
+		assertEquals(myBand.getId(), savedBand.getId());
+	}
+
+
 	@Test 
 	public void Band_allReturnsAllBands(){
 		Band newBand = new Band("Incubus");
@@ -35,6 +44,13 @@ public class BandTest {
 		Band newBand2 = new Band("Foals");
 		newBand2.save();
 		assertEquals(2, Band.all().size());
+	}
+
+	@Test 
+	public void Band_findReturnsBand(){
+		Band newBand = new Band("Incubus");
+		newBand.save();
+		assertEquals(newBand, Band.findBand(newBand.getId()));
 	}
 
 }
