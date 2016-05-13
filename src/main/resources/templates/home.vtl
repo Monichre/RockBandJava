@@ -1,13 +1,41 @@
-<div class="container">
-  <h1>Blank</h1>
-  <p></p>
+<div class="row">
+	<div class="banner">
+		<header>
+			<nav>
+				<ul>
+					<li><a href ="/bands">Your bands</a></li>
+					<li>Your venues</li>
+				</ul>
+			</nav>
+		</header>
+		<h1><span class="audio">Audio</span><span class="phile">Phile</span></h1>
+		
+	</div><!--end of banner -->
+	<h2>Geek Jam</h2>
+	<div class="row form-row">
+		<form action='/bands' method='post' class="clearfix">
+			<div class="form-group">
+				<label for="bandName">Band</label>
+				<input id="bandName" name="bandName" class="form-control" type="text">
+			</div>
+			<div class="form-group">
+				<label for="venueName">Venue</label>
+				<input id="venueName" name="venueName" class="form-control" type="text">
+			</div>
+			<div class="form-group">
+				<label for="city">City</label>
+				<input id="city" name="city" class="form-control" type="text">
+			</div>
 
-  <form action='/detector' method='get'>
-    <div class="form-group">
-      <label for="blank">Blank</label>
-      <input id="blank" name="blank" class="form-control" type="text">
-    </div>
+			<button type="submit" class="clearfix btn btn-info">Add Entry</button>
+		</form>
+	</div><!--end of form-row -->
+	<div class="row news-row clearfix">
+		<h2>In the news</h2>
+		<!-- <img src="./images/radio2.jpg" height="300" width="400"> -->
+		<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+		<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+		
+	</div><!--end of news row -->
+</div><!-- end of row -->
 
-    <button type="submit" class="btn btn-info">Submit</button>
-  </form>
-</div

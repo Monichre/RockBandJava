@@ -1,0 +1,25 @@
+<div class="row">
+	<div class="banner">
+		<header>
+			<nav>
+				<ul>
+					<li>Your bands</li>
+					<li>Your venues</li>
+				</ul>
+			</nav>
+		</header>
+		<h1><span class="audio">Audio</span><span class="phile">Phile</span></h1>
+		
+	</div><!--end of banner -->
+	
+	<div class="bands row container2">
+	#if($newBand)
+		<h2>Most recent reviews</h2>
+			#foreach ($band in $newBand.all())
+				<h3><a href="/bands/$newBand.getId()">$band.getName()</a></h3>
+			#end
+	#else
+	#end
+
+	</div>
+</div><!-- end of row -->

@@ -8,7 +8,6 @@ public class Band {
 
 	public Band(String name){
 		this.name = name;
-
 	}
 
 	@Override
@@ -85,6 +84,20 @@ public class Band {
 				venues.add(venue);
 			}
 			return venues;
+		}
+	}
+
+	public void delete() {
+		try(Connection con = DB.sql2o.open()) {
+			String deleteQuery = "DELETE FROM bands WHERE id = :id;";
+			  con.createQuery(deleteQuery)
+			    .addParameter("id", this.getId())
+			    .executeUpdate();
+
+			String joinDeleteQuery = "DELETE FROM concerts WHERE band_id = :band_id";
+			  con.createQuery(joinDeleteQuery)
+			    .addParameter("band_id", this.getId())
+			    .executeUpdate();
 		}
 	}
 

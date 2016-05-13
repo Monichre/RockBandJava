@@ -1,0 +1,41 @@
+<div class="row">
+	<div class="banner">
+		<header>
+			<nav>
+				<ul>
+					<li>Your bands</li>
+					<li>Your venues</li>
+				</ul>
+			</nav>
+		</header>
+		<h1><span class="audio">Audio</span><span class="phile">Phile</span></h1>
+		
+	</div><!--end of banner -->
+	<div class="band">
+		<h1><a href="/bands/$newBand.getId()"></a>$newBand.getName()</h1>
+		<nav>
+			<ul>
+				#foreach ($venue in $newBand.getVenues())
+				<li>$venue.getName()</li>
+				#end
+				#if ($newVenue)
+				<li>$newVenue.getName()</li>
+				#else
+				#end
+			</ul>
+		</nav>
+		<div class="row form-row">
+			<form action='/bands/$newBand.getId()/newVenue' method='post' class="clearfix">
+				<div class="form-group">
+					<label for="newVenue">Venue</label>
+					<input id="newVenue" name="newVenue" class="form-control" type="text">
+				</div>
+				<div class="form-group">
+					<label for="newCity">City</label>
+					<input id="newCity" name="newCity" class="form-control" type="text">
+				</div>
+				<button type="submit" class="clearfix btn btn-info">Add another venue</button>
+			</form>
+		</div><!--end of form-row -->
+	</div><!-- end of band row -->
+</div><!-- end of row -->
