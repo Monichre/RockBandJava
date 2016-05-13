@@ -28,4 +28,13 @@ public class BandTest {
 		assertEquals(newBand, Band.all().get(0));
 	}
 
+	@Test 
+	public void Band_allReturnsAllBands(){
+		Band newBand = new Band("Incubus");
+		newBand.save();
+		Band newBand2 = new Band("Foals");
+		newBand2.save();
+		assertEquals(2, Band.all().size());
+	}
+
 }
