@@ -1,4 +1,4 @@
-
+import java.util.*;
 import org.sql2o.*;
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -63,16 +63,16 @@ public class VenueTest {
   //   assertTrue(myVenue.equals(savedVenue));
   // }
   
-  // @Test
-  // public void getVenues_returnsAllVenues_List() {
-  //   Venue myVenue = new Venue("Fleet Foxes");
-  //   myVenue.save();
-  //   Venue myVenue = new Venue("Red Rocks", "Denver");
-  //   myVenue.save();
-  //   myVenue.addVenue(myVenue);
-  //   List savedVenues = myVenue.getVenues();
-  //   assertEquals(1, savedVenues.size());
-  // }
+  @Test
+  public void getVenues_returnsAllVenues_List() {
+    Band myBand = new Band("Fleet Foxes");
+    myBand.save();
+    Venue myVenue = new Venue("Red Rocks", "Denver");
+    myVenue.save();
+    myVenue.addBand(myBand);
+    List savedBands = myVenue.getBands();
+    assertEquals(1, savedBands.size());
+  }
 
 
 

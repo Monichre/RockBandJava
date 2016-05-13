@@ -2,6 +2,7 @@ import java.util.*;
 import org.sql2o.*;
 
 
+
 public class Venue {
 	private String name;
 	private String city;
@@ -66,6 +67,25 @@ public class Venue {
 			.addParameter("venue_id", this.getId())
 			.addParameter("band_id", band.getId())
 			.executeUpdate();
+		}
+	}
+	public List<Band> getBands(){
+		try(Connection con = DB.sql2o.open()){
+			String joinQuery = "SELECT band_id FROM concerts WHERE venue_id = :venue_id";
+			List<Integer> band_ids = con.createQuery(joinQuery)
+			.addParameter("venue_id", this.getId())
+			.executeAndFetch(Integer.class);
+
+			List<Band> bands = new ArrayList<Band>();
+
+			for(Integer band_id : band_ids){
+				String bandQuery = "SELECT * FROM bands WHERE id = :band_id";
+				Band band = con.createQuery(bandQuery)
+				.addParameter("band_id", band_id)
+				.executeAndFetchFirst(Band.class);
+				bands.add(band);
+			}
+			return bands;
 		}
 	}
 }
