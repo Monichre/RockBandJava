@@ -28,15 +28,20 @@ public class Venue {
 		return name;
 	}
 
+	public String getCity(){
+		return city;
+	}
+
 	public int getId(){
 		return id;
 	}
 
 	public void save(){
 		try(Connection con = DB.sql2o.open()) {
-			String sql = "INSERT INTO venues(name) VALUES (:name)";
+			String sql = "INSERT INTO venues(name, city) VALUES (:name, :city)";
 			this.id = (int) con.createQuery(sql, true)
-			.addParameter("name", this.name)
+			.addParameter("name", this.getName())
+			.addParameter("city", this.getCity())
 			.executeUpdate()
 			.getKey();
     	}
@@ -59,6 +64,16 @@ public class Venue {
 			return venue;
 		}
 	}
+	public void update(String property, String newValue){
+		try(Connection con = DB.sql2o.open()) {
+			String updateQuery = "UPDATE venues SET " + property + " = :newValue WHERE id = :id;";
+			  con.createQuery(updateQuery)
+			    .addParameter("id", this.getId())
+			    .addParameter("newValue", newValue)
+			    .executeUpdate();
+		}
+
+	}
 
 	public void addBand(Band band){
 		try (Connection con = DB.sql2o.open()){
@@ -69,6 +84,7 @@ public class Venue {
 			.executeUpdate();
 		}
 	}
+
 	public List<Band> getBands(){
 		try(Connection con = DB.sql2o.open()){
 			String joinQuery = "SELECT band_id FROM concerts WHERE venue_id = :venue_id";

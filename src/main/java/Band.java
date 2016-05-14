@@ -33,7 +33,7 @@ public class Band {
 		try(Connection con = DB.sql2o.open()) {
 			String sql = "INSERT INTO bands(name) VALUES (:name)";
 			this.id = (int) con.createQuery(sql, true)
-			.addParameter("name", this.name)
+			.addParameter("name", this.getName())
 			.executeUpdate()
 			.getKey();
     	}
@@ -70,7 +70,7 @@ public class Band {
 	public List<Venue> getVenues(){
 		try(Connection con = DB.sql2o.open()){
 			String joinQuery = "SELECT venue_id FROM concerts WHERE band_id = :band_id";
-			List<Integer>venue_ids = con.createQuery(joinQuery)
+			List<Integer> venue_ids = con.createQuery(joinQuery)
 			.addParameter("band_id", this.getId())
 			.executeAndFetch(Integer.class);
 
@@ -99,6 +99,17 @@ public class Band {
 			    .addParameter("band_id", this.getId())
 			    .executeUpdate();
 		}
+	}
+
+	public void update(String property, String newValue){
+		try(Connection con = DB.sql2o.open()) {
+			String updateQuery = "UPDATE bands SET " + property + " = :newValue WHERE id = :id;";
+			  con.createQuery(updateQuery)
+			    .addParameter("id", this.getId())
+			    .addParameter("newValue", newValue)
+			    .executeUpdate();
+	    }
+
 	}
 
 

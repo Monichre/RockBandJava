@@ -22,11 +22,18 @@ public class BandTest {
 		assertEquals("Incubus", Band.all().get(0).getName());
 	}
 
+	@Test
+	public void equals_returnsTrueIfDescriptionsAretheSame() {
+		Band firstBand = new Band("Mow the lawn");
+		Band secondBand = new Band("Mow the lawn");
+		assertTrue(firstBand.equals(secondBand));
+	}
+
 	@Test 
 	public void save_addsToDatabase(){
 		Band newBand = new Band("Incubus");
 		newBand.save();
-		assertEquals(newBand, Band.all().get(0));
+		assertTrue(newBand.equals(Band.all().get(0)));
 	}
 
 	@Test
@@ -54,7 +61,7 @@ public class BandTest {
 	}
 
 	@Test
-	public void addTask_addVenuestoBand() {
+	public void addVenues_addVenuestoBand() {
 		Band myBand = new Band("Fleet Foxes");
 		myBand.save();
 		Venue myVenue = new Venue("Red Rocks", "Denver");

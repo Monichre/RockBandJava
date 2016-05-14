@@ -8,7 +8,20 @@
 	</head>
   	<body>
 	  	<div class="container">
-	    	#parse($template)
-	    </div>
+	  		<div class="row">
+	  			<div class="banner">
+					<header>
+						<nav>
+							<ul>
+								<li><a href ="/bands">Your bands</a></li>
+								<li><a href="/venues">Your venues</a></li>
+							</ul>
+						</nav>
+					</header>
+					<h1><span class="audio">Audio</span><span class="phile">Phile</span></h1>
+				</div><!--end of banner -->	
+				#parse($template)
+	   		</div><!-- end of row -->
+	    </div><!--end of container -->
   	</body>
 </html>

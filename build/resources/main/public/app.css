@@ -140,11 +140,16 @@ nav ul {
      text-align: center;
 }
 
-nav ul li {
+nav ul li, nav ul li a {
   text-align: center;
   width: 20%;
   font-family: "above";
   color: white;
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+	color: white;
 }
 
 nav ul li:hover {
@@ -161,7 +166,7 @@ input {
 }
 
 button {
-	display: block;
+	display: inline-block;
 	margin: auto;
 }
 
@@ -169,14 +174,11 @@ button {
 	float: left;
 }
 
-a {
+.bands h3 a {
 	text-align: center;
 	text-decoration: none;
 	font-family: "above";
-	color: black;
 }
 
-a:hover {
-	text-decoration: line-through;
 
-}
+

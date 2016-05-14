@@ -1,26 +1,17 @@
-<div class="row">
-	<div class="banner">
-		<header>
+
+	<div class="band">
+		<h1>$newBand.getName()</h1>
+		#if ($newBand)
 			<nav>
 				<ul>
-					<li>Your bands</li>
-					<li>Your venues</li>
+					#foreach ($venue in $newBand.getVenues())
+						<li>$venue.getName(), $venue.getCity()</li>
+					#end
+					
 				</ul>
 			</nav>
-		</header>
-		<h1><span class="audio">Audio</span><span class="phile">Phile</span></h1>
-		
-	</div><!--end of banner -->
-	<div class="band">
-		<h1><a href="/bands/$newBand.getId()"></a>$newBand.getName()</h1>
-		<nav>
-			<ul>
-				#foreach ($venue in $newBand.getVenues())
-				<li>$venue.getName()</li>
-				#end
-				
-			</ul>
-		</nav>
+		#else
+		#end
 		<div class="row form-row">
 			<form action='/bands/$newBand.getId()/newVenue' method='post' class="clearfix">
 				<div class="form-group">
@@ -35,4 +26,3 @@
 			</form>
 		</div><!--end of form-row -->
 	</div><!-- end of band row -->
-</div><!-- end of row -->

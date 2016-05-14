@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="VenueTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2016-05-13T23:31:28" hostname="Liams-MacBook-Air.local" time="0.282">
+<testsuite name="VenueTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2016-05-14T04:24:55" hostname="Liams-Air.hsd1.or.comcast.net" time="0.271">
   <properties/>
-  <testcase name="save_addsToDatabase" classname="VenueTest" time="0.032"/>
-  <testcase name="Venue_instantiates_Correctly" classname="VenueTest" time="0.013"/>
-  <testcase name="all_returnsAllVenues" classname="VenueTest" time="0.045"/>
-  <testcase name="save_assignsIdToObject" classname="VenueTest" time="0.032"/>
-  <testcase name="find_returnsVenue" classname="VenueTest" time="0.035"/>
-  <testcase name="getName_returnsName" classname="VenueTest" time="0.036"/>
-  <testcase name="getVenues_returnsAllVenues_List" classname="VenueTest" time="0.085"/>
+  <testcase name="save_addsToDatabase" classname="VenueTest" time="0.037"/>
+  <testcase name="Venue_instantiates_Correctly" classname="VenueTest" time="0.011"/>
+  <testcase name="all_returnsAllVenues" classname="VenueTest" time="0.046"/>
+  <testcase name="save_assignsIdToObject" classname="VenueTest" time="0.039"/>
+  <testcase name="find_returnsVenue" classname="VenueTest" time="0.037"/>
+  <testcase name="getName_returnsName" classname="VenueTest" time="0.035"/>
+  <testcase name="getVenues_returnsAllVenues_List" classname="VenueTest" time="0.062"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
