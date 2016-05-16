@@ -27,9 +27,19 @@ public class App {
       post("/bands", (request, response) -> {
         Map<String, Object> model = new HashMap<String, Object>();
         String bandName = request.queryParams("bandName");
+
+        if(bandName.equals("") == true){
+          return null;
+        }
+
         Band newBand = new Band(bandName);
         newBand.save();
         String venueName = request.queryParams("venueName");
+
+        if(venueName.equals("") == true){
+          return null;
+        } 
+
         String city = request.queryParams("city");
         Venue newVenue = new Venue(venueName, city);
         newVenue.save();
@@ -47,19 +57,14 @@ public class App {
         return new ModelAndView(model, "templates/layout.vtl");
       }, new VelocityTemplateEngine());
 
-      // post("/bands/:id", (request, response) -> {
-      //   Map<String, Object> model = new HashMap<String, Object>();
-      //   Band newBand = Band.findBand(Integer.parseInt(request.params(":id")));      
-      //   model.put("newBand", newBand);
-      //   model.put("template", "templates/bandpage.vtl");
-      //   return new ModelAndView(model, "templates/layout.vtl");
-      // }, new VelocityTemplateEngine());
 
       post("/bands/:id/newVenue", (request, response) -> {
         Map<String, Object> model = new HashMap<String, Object>();
         Band newBand = Band.findBand(Integer.parseInt(request.params(":id")));
-        newBand.save();
         String newVenue = request.queryParams("newVenue");
+        if(newVenue.equals("") == true){
+          return null;
+        } 
         String newCity = request.queryParams("newCity");
         Venue newVenueObject = new Venue(newVenue, newCity);
         newVenueObject.save();
@@ -75,6 +80,23 @@ public class App {
         model.put("template", "templates/bandpage.vtl");
         return new ModelAndView(model, "templates/layout.vtl");
       }, new VelocityTemplateEngine());
+
+      get("/venues", (request, response) -> {
+        Map<String, Object> model = new HashMap<String, Object>();
+        model.put("venues", Venue.all());
+        model.put("template", "templates/venues.vtl");
+        return new ModelAndView(model, "templates/layout.vtl");
+      }, new VelocityTemplateEngine());
+
+      post("/venues", (request, response) -> {
+        Map<String, Object> model = new HashMap<String, Object>();
+        model.put("venues", Venue.all());
+        model.put("template", "templates/venues.vtl");
+        return new ModelAndView(model, "templates/layout.vtl");
+      }, new VelocityTemplateEngine());
+       
+      
+
 
   }
 

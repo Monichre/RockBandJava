@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="BandTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2016-05-14T04:24:54" hostname="Liams-Air.hsd1.or.comcast.net" time="0.944">
+<testsuite name="BandTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2016-05-16T01:33:03" hostname="Liams-Air.hsd1.or.comcast.net" time="1.109">
   <properties/>
-  <testcase name="equals_returnsTrueIfDescriptionsAretheSame" classname="BandTest" time="0.401"/>
+  <testcase name="equals_returnsTrueIfDescriptionsAretheSame" classname="BandTest" time="0.498"/>
   <testcase name="all_returnsAllBands" classname="BandTest" time="0.153"/>
-  <testcase name="Band_instantiates_Correctly" classname="BandTest" time="0.011"/>
-  <testcase name="save_addsToDatabase" classname="BandTest" time="0.037"/>
-  <testcase name="delete_deletesAllTasksAndCategoriesAssociations" classname="BandTest" time="0.091"/>
-  <testcase name="save_assignsIdToObject" classname="BandTest" time="0.038"/>
-  <testcase name="addTask_addVenuestoBand" classname="BandTest" time="0.076"/>
-  <testcase name="getName_returnsName" classname="BandTest" time="0.036"/>
-  <testcase name="find_returnsBand" classname="BandTest" time="0.033"/>
-  <testcase name="getVenues_returnsAllVenues_List" classname="BandTest" time="0.065"/>
+  <testcase name="Band_instantiates_Correctly" classname="BandTest" time="0.014"/>
+  <testcase name="addVenues_addVenuestoBand" classname="BandTest" time="0.087"/>
+  <testcase name="save_addsToDatabase" classname="BandTest" time="0.046"/>
+  <testcase name="delete_deletesAllTasksAndCategoriesAssociations" classname="BandTest" time="0.1"/>
+  <testcase name="save_assignsIdToObject" classname="BandTest" time="0.041"/>
+  <testcase name="getName_returnsName" classname="BandTest" time="0.043"/>
+  <testcase name="find_returnsBand" classname="BandTest" time="0.048"/>
+  <testcase name="getVenues_returnsAllVenues_List" classname="BandTest" time="0.075"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
