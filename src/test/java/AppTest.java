@@ -32,12 +32,39 @@ public class AppTest extends FluentTest {
   @Test
   public void bandIsCreatedTest() {
     goTo("http://localhost:4567/");
-    
     fill("#bandName").with("Incubus");
     fill("#venueName").with("Red Rocks");
     fill("#city").with("Denver");
     submit(".btn");
     assertThat(pageSource()).contains("Incubus");
+  }
+
+  @Test
+  public void bandsLinkWorks() {
+    goTo("http://localhost:4567/");
+    fill("#bandName").with("Incubus");
+    fill("#venueName").with("Red Rocks");
+    fill("#city").with("Denver");
+    submit(".btn");
+    assertThat(pageSource()).contains("Incubus");
+    click("a", withText("Home"));
+    assertThat(pageSource()).contains("AudioPhile");
+    click("a", withText("Your bands"));
+    assertThat(pageSource()).contains("Incubus");
+  }
+  @Test
+  public void venuesLinkWorks() {
+    goTo("http://localhost:4567/");
+    fill("#bandName").with("Incubus");
+    fill("#venueName").with("Red Rocks");
+    fill("#city").with("Denver");
+    submit(".btn");
+    assertThat(pageSource()).contains("Incubus");
+    click("a", withText("Home"));
+    assertThat(pageSource()).contains("AudioPhile");
+    click("a", withText("Your venues"));
+    assertThat(pageSource()).contains("Red Rocks");
+
   }
 
   @Test
