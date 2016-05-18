@@ -40,26 +40,21 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Incubus");
   }
 
-  // @Test
-  // public void venueIsCreatedTest() {
-  //   goTo("http://localhost:4567/");
-  //   click("a", withText("Venues"));
-  //   fill("#description").with("Tavern");
-  //   submit(".btn");
-  //   assertThat(pageSource()).contains("Tavern");
-  // }
-
-  // @Test
-  // public void bandShowPageDisplaysName() {
-  //   Band testBand = new Band("House");
-  //   testBand.save();
-  //   String url = String.format("http://localhost:4567/bands/%d", testBand.getId());
-  //   goTo(url);
-  //   assertThat(pageSource()).contains("House");
-  // }
+  @Test
+  public void PageDisplaysBandName() {
+    Band testBand = new Band("Tool");
+    testBand.save();
+    Venue testVenue = new Venue("MSG", "NYC");
+    testVenue.save();
+    testBand.addVenue(testVenue);
+    String url = String.format("http://localhost:4567/bands/%d", testBand.getId());
+    goTo(url);
+    assertThat(pageSource()).contains("Tool");
+    
+  }
 
   @Test
-  public void venueIsAddedToBand() {
+  public void pageDisplaysVenue() {
     Band testBand = new Band("CSNY");
     testBand.save();
     Venue testVenue = new Venue("MSG", "NYC");
@@ -83,14 +78,28 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Incubus");
   }
 
-  // @Test
-  // public void bandIsDeleted() {
-  //   Band testBand = new Band("House");
-  //   testBand.save();
-  //   String url = String.format("http://localhost:4567/bands/%d", testBand.getId());
-  //   goTo(url);
-  //   submit("#delete");
-  //   goTo(url);
-  //   assertThat(pageSource()).contains("$band.getName()");
+  @Test
+  public void bandsListsBands() {
+    Band testBand = new Band("Incubus");
+    testBand.save();
+    Band testBand2 = new Band("CSNY");
+    testBand2.save();
+    String url = String.format("http://localhost:4567/bands");
+    goTo(url);
+    assertThat(pageSource()).contains("CSNY");
+    assertThat(pageSource()).contains("Incubus");
   }
+
+  @Test
+  public void bandIsDeleted() {
+    Band testBand = new Band("House");
+    testBand.save();
+    String url = String.format("http://localhost:4567/bands/%d", testBand.getId());
+    goTo(url);
+    submit("#delete");
+    goTo(url);
+    assertThat(pageSource()).contains("$newBand.getName()");
+  }
+
+}
 

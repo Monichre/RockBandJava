@@ -26,4 +26,8 @@
 			</form>
 		</div><!--end of form-row -->
 		<p><a href="/bands/$newBand.getId()/edit">Edit this band</a></p>
+		<form action='/bands/$newBand.getId()/delete' method='post'>
+		  <button type="submit" class="btn-danger" id="delete">Delete this band</button>
+		</form>
+
 	</div><!-- end of band row -->
