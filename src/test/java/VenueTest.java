@@ -52,16 +52,16 @@ public class VenueTest {
     assertEquals(newVenue, Venue.findVenue(newVenue.getId()));
   }
 
-  // @Test
-  // public void addTask_addVenuestoVenue() {
-  //   Venue myVenue = new Venue("Fleet Foxes");
-  //   myVenue.save();
-  //   Venue myVenue = new Venue("Red Rocks", "Denver");
-  //   myVenue.save();
-  //   myVenue.addVenue(myVenue);
-  //   Venue savedVenue = myVenue.getVenues().get(0);
-  //   assertTrue(myVenue.equals(savedVenue));
-  // }
+  @Test
+  public void addBands_addBandsToVenues() {
+    Band myBand = new Band("Fleet Foxes");
+    myBand.save();
+    Venue myVenue = new Venue("Red Rocks", "Denver");
+    myVenue.save();
+    myVenue.addBand(myBand);
+    Band savedBand = myVenue.getBands().get(0);
+    assertTrue(myBand.equals(savedBand));
+  }
   
   @Test
   public void getVenues_returnsAllVenues_List() {

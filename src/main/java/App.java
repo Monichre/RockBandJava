@@ -27,19 +27,15 @@ public class App {
       post("/bands", (request, response) -> {
         Map<String, Object> model = new HashMap<String, Object>();
         String bandName = request.queryParams("bandName");
-
         if(bandName.equals("") == true){
           return null;
         }
-
         Band newBand = new Band(bandName);
         newBand.save();
         String venueName = request.queryParams("venueName");
-
         if(venueName.equals("") == true){
           return null;
         } 
-
         String city = request.queryParams("city");
         Venue newVenue = new Venue(venueName, city);
         newVenue.save();
@@ -94,12 +90,24 @@ public class App {
         model.put("template", "templates/venues.vtl");
         return new ModelAndView(model, "templates/layout.vtl");
       }, new VelocityTemplateEngine());
-       
-      
 
+      get("/bands/:id/edit", (request, response) -> {
+        Map<String, Object> model = new HashMap<String, Object>();
+        Band newBand = Band.findBand(Integer.parseInt(request.params(":id")));
+        model.put("newBand", newBand);
+        model.put("template", "templates/edit-band.vtl");
+        return new ModelAndView(model, "templates/layout.vtl");
+      }, new VelocityTemplateEngine());
+
+      post("/bands/:id", (request, response) -> {
+        Map<String, Object> model = new HashMap<String, Object>();
+        int bandId = Integer.parseInt(request.params(":id"));
+        Band band = Band.findBand(bandId);
+        String newName = request.queryParams("editName");
+        band.update("name", newName);
+        response.redirect("/bands/" + bandId);
+        return null;
+      });
 
   }
-
-
-
 }
