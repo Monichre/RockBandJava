@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="VenueTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2016-05-18T02:34:40" hostname="Liams-Air.hsd1.or.comcast.net" time="0.323">
+<testsuite name="VenueTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2016-05-18T02:40:45" hostname="Liams-Air.hsd1.or.comcast.net" time="0.314">
   <properties/>
-  <testcase name="addBands_addBandsToVenues" classname="VenueTest" time="0.066"/>
-  <testcase name="save_addsToDatabase" classname="VenueTest" time="0.031"/>
-  <testcase name="Venue_instantiates_Correctly" classname="VenueTest" time="0.012"/>
+  <testcase name="addBands_addBandsToVenues" classname="VenueTest" time="0.062"/>
+  <testcase name="save_addsToDatabase" classname="VenueTest" time="0.036"/>
+  <testcase name="Venue_instantiates_Correctly" classname="VenueTest" time="0.009"/>
   <testcase name="all_returnsAllVenues" classname="VenueTest" time="0.046"/>
-  <testcase name="save_assignsIdToObject" classname="VenueTest" time="0.035"/>
-  <testcase name="find_returnsVenue" classname="VenueTest" time="0.028"/>
-  <testcase name="getName_returnsName" classname="VenueTest" time="0.035"/>
-  <testcase name="getVenues_returnsAllVenues_List" classname="VenueTest" time="0.067"/>
+  <testcase name="save_assignsIdToObject" classname="VenueTest" time="0.031"/>
+  <testcase name="find_returnsVenue" classname="VenueTest" time="0.034"/>
+  <testcase name="getName_returnsName" classname="VenueTest" time="0.034"/>
+  <testcase name="getVenues_returnsAllVenues_List" classname="VenueTest" time="0.06"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

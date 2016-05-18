@@ -58,18 +58,17 @@ public class AppTest extends FluentTest {
   //   assertThat(pageSource()).contains("House");
   // }
 
-  // @Test
-  // public void venueIsAddedToBand() {
-  //   Band testBand = new Band("House");
-  //   testBand.save();
-  //   Venue testVenue = new Venue("Downtown");
-  //   testVenue.save();
-  //   String url = String.format("http://localhost:4567/bands/%d", testBand.getId());
-  //   goTo(url);
-  //   fillSelect("#venue_id").withText("Downtown");
-  //   submit(".btn btn-success");
-  //   assertThat(pageSource()).contains("Downtown");
-  // }
+  @Test
+  public void venueIsAddedToBand() {
+    Band testBand = new Band("CSNY");
+    testBand.save();
+    Venue testVenue = new Venue("MSG", "NYC");
+    testVenue.save();
+    testBand.addVenue(testVenue);
+    String url = String.format("http://localhost:4567/bands/%d", testBand.getId());
+    goTo(url);
+    assertThat(pageSource()).contains("MSG, NYC");
+  }
 
   @Test
   public void bandNameIsUpdated() {
