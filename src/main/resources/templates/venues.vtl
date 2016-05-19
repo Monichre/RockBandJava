@@ -1,6 +1,6 @@
 #if ($venues)
 	#foreach ($venue in $venues)
-		<h2 class="venue"><a href="">$venue.getName(), $venue.getCity()</h2>
+		<h2 class="venue"><a href="venues/$venue.getId()">$venue.getName()</a>, $venue.getCity()</h2>
 	#end
 #else
 	<p class="venue">No new venues</p>

@@ -68,6 +68,23 @@ public class AppTest extends FluentTest {
   }
 
   @Test
+  public void venuesLinkVenuePAge() {
+    goTo("http://localhost:4567/");
+    fill("#bandName").with("Incubus");
+    fill("#venueName").with("Red Rocks");
+    fill("#city").with("Denver");
+    submit(".btn");
+    assertThat(pageSource()).contains("Incubus");
+    click("a", withText("Home"));
+    assertThat(pageSource()).contains("AudioPhile");
+    click("a", withText("Your venues"));
+    assertThat(pageSource()).contains("Red Rocks");
+    click("a", withText("Red Rocks"));
+    assertThat(pageSource()).contains("Incubus");
+
+  }
+
+  @Test
   public void PageDisplaysBandName() {
     Band testBand = new Band("Tool");
     testBand.save();
@@ -92,20 +109,20 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("MSG, NYC");
   }
 
-  @Test
-  public void sameVenueNotAdded() {
-    Band testBand = new Band("CSNY");
-    testBand.save();
-    Venue testVenue = new Venue("MSG", "NYC");
-    testVenue.save();
-    testBand.addVenue(testVenue);
-    String url = String.format("http://localhost:4567/bands/%d", testBand.getId());
-    goTo(url);
-    fill("#newVenue").with("MSG");
-    fill("#newCity").with("NYC");
-    submit(".btn");
-    assertThat(pageSource()).contains("500 Internal Error");
-  }
+  // @Test
+  // public void sameVenueNotAdded() {
+  //   Band testBand = new Band("CSNY");
+  //   testBand.save();
+  //   Venue testVenue = new Venue("MSG", "NYC");
+  //   testVenue.save();
+  //   testBand.addVenue(testVenue);
+  //   String url = String.format("http://localhost:4567/bands/%d", testBand.getId());
+  //   goTo(url);
+  //   fill("#newVenue").with("MSG");
+  //   fill("#newCity").with("NYC");
+  //   submit(".btn");
+  //   assertThat(pageSource()).contains("500 Internal Error");
+  // }
 
   @Test
   public void bandNameIsUpdated() {

@@ -52,6 +52,14 @@ public class VenueTest {
     assertEquals(newVenue, Venue.findVenue(newVenue.getId()));
   }
 
+  @Test 
+  public void find_doesNotReturnDuplicates(){
+    Venue newVenue = new Venue("Red Rocks", "Denver");
+    newVenue.save();
+    String venueName = "Red Rocks";
+    assertEquals(true, Venue.venueIsEntered(venueName));
+  }
+
   @Test
   public void addBands_addBandsToVenues() {
     Band myBand = new Band("Fleet Foxes");

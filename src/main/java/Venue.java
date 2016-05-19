@@ -65,6 +65,22 @@ public class Venue {
 			return venue;
 		}
 	}
+
+	public static boolean venueIsEntered(String venueName){
+		try(Connection con = DB.sql2o.open()) {
+			String sql = "SELECT DISTINCT name FROM venues";
+			List<String> venues = con.createQuery(sql)
+			.executeAndFetch(String.class);
+			for(String venue : venues){
+				if(venueName.equals(venue)){
+					return true;
+				}
+			}
+		}
+
+		
+		return false;
+	}
 	
 	public void addBand(Band band){
 		try (Connection con = DB.sql2o.open()){

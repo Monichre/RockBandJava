@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="VenueTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2016-05-19T17:35:11" hostname="Liams-MacBook-Air.local" time="0.326">
+<testsuite name="VenueTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2016-05-19T23:35:13" hostname="Liams-MacBook-Air.local" time="0.352">
   <properties/>
-  <testcase name="addBands_addBandsToVenues" classname="VenueTest" time="0.064"/>
-  <testcase name="save_addsToDatabase" classname="VenueTest" time="0.029"/>
+  <testcase name="find_doesNotReturnDuplicates" classname="VenueTest" time="0.033"/>
+  <testcase name="addBands_addBandsToVenues" classname="VenueTest" time="0.063"/>
+  <testcase name="save_addsToDatabase" classname="VenueTest" time="0.037"/>
   <testcase name="Venue_instantiates_Correctly" classname="VenueTest" time="0.01"/>
-  <testcase name="all_returnsAllVenues" classname="VenueTest" time="0.051"/>
-  <testcase name="save_assignsIdToObject" classname="VenueTest" time="0.035"/>
-  <testcase name="find_returnsVenue" classname="VenueTest" time="0.034"/>
-  <testcase name="getName_returnsName" classname="VenueTest" time="0.031"/>
-  <testcase name="getVenues_returnsAllVenues_List" classname="VenueTest" time="0.067"/>
+  <testcase name="all_returnsAllVenues" classname="VenueTest" time="0.044"/>
+  <testcase name="save_assignsIdToObject" classname="VenueTest" time="0.034"/>
+  <testcase name="find_returnsVenue" classname="VenueTest" time="0.035"/>
+  <testcase name="getName_returnsName" classname="VenueTest" time="0.035"/>
+  <testcase name="getVenues_returnsAllVenues_List" classname="VenueTest" time="0.058"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

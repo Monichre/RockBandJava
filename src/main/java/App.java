@@ -33,19 +33,29 @@ public class App {
 
         for(Band band : Band.all()){
           if(bandName.equals(band.getName())){
-            response.redirect("/");
+            return null;
           }
-        }
+        }  
         Band newBand = new Band(bandName);
         newBand.save();
         String venueName = request.queryParams("venueName");
+        String city = request.queryParams("city");
         if(venueName.equals("") == true){
           return null;
         }
-        String city = request.queryParams("city");
-        Venue newVenue = new Venue(venueName, city);
-        newVenue.save();
-        newBand.addVenue(newVenue);
+        
+        if (Venue.venueIsEntered(venueName) == false){
+          Venue newVenue = new Venue(venueName, city);
+          newVenue.save();
+          newBand.addVenue(newVenue);
+          newVenue.addBand(newBand);
+        } else {
+          for(Venue venue : Venue.all()){
+            if(venueName.equals(venue.getName())){
+              newBand.addVenue(venue);
+            }
+          }
+        }
         model.put("bands", Band.all());
         response.redirect("/bands/" + newBand.getId());
         return new ModelAndView(model, "templates/layout.vtl");
@@ -64,18 +74,25 @@ public class App {
         Map<String, Object> model = new HashMap<String, Object>();
         Band newBand = Band.findBand(Integer.parseInt(request.params(":id")));
         String newVenue = request.queryParams("newVenue");
+        String newCity = request.queryParams("newCity");
         if(newVenue.equals("") == true){
           return null;
         }
 
-        for (Venue venue : Venue.all()) {
-          if(newVenue.equals(venue.getName()))
-            response.redirect("/bands/:id/newVenue");
+        if (Venue.venueIsEntered(newVenue) == false){
+          Venue newVenueObject = new Venue(newVenue, newCity);
+          newVenueObject.save();
+          newBand.addVenue(newVenueObject);
+          newVenueObject.addBand(newBand);
+        }else {
+          for(Venue venue : Venue.all()){
+            if(newVenue.equals(venue.getName())){
+              newBand.addVenue(venue);
+            }
+          }
         }
-        String newCity = request.queryParams("newCity");
-        Venue newVenueObject = new Venue(newVenue, newCity);
-        newVenueObject.save();
-        newBand.addVenue(newVenueObject);
+        
+        
         response.redirect("/bands/" + newBand.getId() + "/newVenue");
         return null;
       });
@@ -101,6 +118,15 @@ public class App {
         model.put("template", "templates/venues.vtl");
         return new ModelAndView(model, "templates/layout.vtl");
       }, new VelocityTemplateEngine());
+
+      get("/venues/:id", (request, response) -> {
+        Map<String, Object> model = new HashMap<String, Object>();
+        Venue newVenue = Venue.findVenue(Integer.parseInt(request.params(":id")));
+        model.put("newVenue", newVenue);
+        model.put("template", "templates/venue.vtl");
+        return new ModelAndView(model, "templates/layout.vtl");
+      }, new VelocityTemplateEngine());
+
 
       get("/bands/:id/edit", (request, response) -> {
         Map<String, Object> model = new HashMap<String, Object>();

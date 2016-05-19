@@ -10,11 +10,12 @@ _{This is a java based web app for a sample band blog. It implements a many-to-m
 
 ## Setup/Installation Requirements
 
-CREATE DATABASE band_tracker;
-\c band_tracker;
-CREATE TABLE bands (id serial PRIMARY KEY, name varchar);
-CREATE TABLE venues (id serial PRIMARY KEY, name varchar, city varchar);
-CREATE DATABASE band_tracker_test WITH TEMPLATE band_tracker;
+* CREATE DATABASE band_tracker;
+* \c band_tracker;
+* CREATE TABLE bands (id serial PRIMARY KEY, name varchar);
+* CREATE TABLE venues (id serial PRIMARY KEY, name varchar, city varchar);
+* CREATE TABLE bands_venues (id serial PRIMARY KEY, band_id varchar, venue_id varchar);
+* CREATE DATABASE band_tracker_test WITH TEMPLATE band_tracker;
 
 _{Clone the Repo}_
 
