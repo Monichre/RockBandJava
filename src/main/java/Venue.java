@@ -50,7 +50,7 @@ public class Venue {
 
 	public static List<Venue> all(){
 		try(Connection con = DB.sql2o.open()) {
-			String sql = "SELECT id, name, city FROM venues";
+			String sql = "SELECT DISTINCT id, name, city FROM venues";
 			return con.createQuery(sql)
 			.executeAndFetch(Venue.class);
 		}
@@ -66,20 +66,9 @@ public class Venue {
 		}
 	}
 	
-	// // public void update(String property, String newValue){
-	// // 	try(Connection con = DB.sql2o.open()) {
-	// // 		String updateQuery = "UPDATE venues SET " + property + " = :newValue WHERE id = :id;";
-	// // 		  con.createQuery(updateQuery)
-	// // 		    .addParameter("id", this.getId())
-	// // 		    .addParameter("newValue", newValue)
-	// // 		    .executeUpdate();
-	// // 	}
-
-	// }
-
 	public void addBand(Band band){
 		try (Connection con = DB.sql2o.open()){
-			String sql = "INSERT INTO concerts (venue_id, band_id) VALUES (:venue_id, :band_id)";
+			String sql = "INSERT INTO bands_venues (venue_id, band_id) VALUES (:venue_id, :band_id)";
 			con.createQuery(sql)
 			.addParameter("venue_id", this.getId())
 			.addParameter("band_id", band.getId())
@@ -89,7 +78,7 @@ public class Venue {
 
 	public List<Band> getBands(){
 		try(Connection con = DB.sql2o.open()){
-			String joinQuery = "SELECT band_id FROM concerts WHERE venue_id = :venue_id";
+			String joinQuery = "SELECT DISTINCT band_id FROM bands_venues WHERE venue_id = :venue_id";
 			List<Integer> band_ids = con.createQuery(joinQuery)
 			.addParameter("venue_id", this.getId())
 			.executeAndFetch(Integer.class);

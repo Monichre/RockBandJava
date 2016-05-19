@@ -29,13 +29,19 @@ public class App {
         String bandName = request.queryParams("bandName");
         if(bandName.equals("") == true){
           return null;
+        } 
+
+        for(Band band : Band.all()){
+          if(bandName.equals(band.getName())){
+            response.redirect("/");
+          }
         }
         Band newBand = new Band(bandName);
         newBand.save();
         String venueName = request.queryParams("venueName");
         if(venueName.equals("") == true){
           return null;
-        } 
+        }
         String city = request.queryParams("city");
         Venue newVenue = new Venue(venueName, city);
         newVenue.save();
@@ -60,7 +66,12 @@ public class App {
         String newVenue = request.queryParams("newVenue");
         if(newVenue.equals("") == true){
           return null;
-        } 
+        }
+
+        for (Venue venue : Venue.all()) {
+          if(newVenue.equals(venue.getName()))
+            response.redirect("/bands/:id/newVenue");
+        }
         String newCity = request.queryParams("newCity");
         Venue newVenueObject = new Venue(newVenue, newCity);
         newVenueObject.save();

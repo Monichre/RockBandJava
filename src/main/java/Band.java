@@ -57,19 +57,22 @@ public class Band {
 		}
 	}
 
-	public void addVenue(Venue venue){
-		try (Connection con = DB.sql2o.open()){
-			String sql = "INSERT INTO concerts (band_id, venue_id) VALUES (:band_id, :venue_id)";
-			con.createQuery(sql)
-			.addParameter("band_id", this.getId())
-			.addParameter("venue_id", venue.getId())
-			.executeUpdate();
-		}
-	}
+	public void addVenue(Venue venue) {
+    if(this.getVenues().contains(venue));
+    else{
+      try(Connection con = DB.sql2o.open()) {
+        String sql = "INSERT INTO bands_venues (band_id, venue_id) VALUES (:band_id, :venue_id)";
+        con.createQuery(sql)
+          .addParameter("band_id", this.getId())
+          .addParameter("venue_id", venue.getId())
+          .executeUpdate();
+      }
+    }
+  }
 
 	public List<Venue> getVenues(){
 		try(Connection con = DB.sql2o.open()){
-			String joinQuery = "SELECT venue_id FROM concerts WHERE band_id = :band_id";
+			String joinQuery = "SELECT DISTINCT venue_id FROM bands_venues WHERE band_id = :band_id";
 			List<Integer> venue_ids = con.createQuery(joinQuery)
 			.addParameter("band_id", this.getId())
 			.executeAndFetch(Integer.class);
@@ -94,7 +97,7 @@ public class Band {
 			    .addParameter("id", this.getId())
 			    .executeUpdate();
 
-			String joinDeleteQuery = "DELETE FROM concerts WHERE band_id = :band_id";
+			String joinDeleteQuery = "DELETE FROM bands_venues WHERE band_id = :band_id";
 			  con.createQuery(joinDeleteQuery)
 			    .addParameter("band_id", this.getId())
 			    .executeUpdate();

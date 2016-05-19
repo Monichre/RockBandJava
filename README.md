@@ -1,26 +1,34 @@
-Band Tracker
+# _{Band Tracker}_
 
-By Liam Ellis
+#### _{Java Database}, {May 19 2016}_
 
-Description
+#### By _**{Liam Ellis}**_
 
-A Java web app, powered by Velocity and Spark, using SQL to store data
+## Description
 
-Setup/Installation Requirements
- 
- Clone the repository
+_{This is a java based web app for a sample band blog. It implements a many-to-many SQL data structure, and renders the App using Spark and Velocity}_
 
- SQL file : concerts.sql
- DATABASE name : band_tracker
- TABLES: bands (id, name), venues(id, name, city), concerts(id, band_id, venue_id)
+## Setup/Installation Requirements
+
+CREATE DATABASE band_tracker;
+\c band_tracker;
+CREATE TABLE bands (id serial PRIMARY KEY, name varchar);
+CREATE TABLE venues (id serial PRIMARY KEY, name varchar, city varchar);
+CREATE DATABASE band_tracker_test WITH TEMPLATE band_tracker;
+
+_{Clone the Repo}_
+
+## Known Bugs
+
+_{No known bugs}_
+
+## Support and contact details
+
+_{For issues or support contact me at liamhellis@gmail.com}_
+
+## Technologies Used
+
+_{Java, Spark, Velocity, SQL, HTML, CSS}_
 
 
-Technologies Used
-
-HTML, CSS, Bootstrap, Java,Fluentlenium, SQL, Gradle, Spark
-
-License
-
-MIT license
-
-Copyright (c) 2016
+Copyright (c) 2016 **_{Liam Ellis}_**

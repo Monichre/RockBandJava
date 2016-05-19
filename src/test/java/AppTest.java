@@ -93,6 +93,21 @@ public class AppTest extends FluentTest {
   }
 
   @Test
+  public void sameVenueNotAdded() {
+    Band testBand = new Band("CSNY");
+    testBand.save();
+    Venue testVenue = new Venue("MSG", "NYC");
+    testVenue.save();
+    testBand.addVenue(testVenue);
+    String url = String.format("http://localhost:4567/bands/%d", testBand.getId());
+    goTo(url);
+    fill("#newVenue").with("MSG");
+    fill("#newCity").with("NYC");
+    submit(".btn");
+    assertThat(pageSource()).contains("500 Internal Error");
+  }
+
+  @Test
   public void bandNameIsUpdated() {
     Band testBand = new Band("Incubs");
     testBand.save();

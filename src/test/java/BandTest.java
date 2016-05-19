@@ -69,6 +69,7 @@ public class BandTest {
 		myBand.addVenue(myVenue);
 		Venue savedVenue = myBand.getVenues().get(0);
 		assertTrue(myVenue.equals(savedVenue));
+		assertEquals(1,myBand.getVenues().size());
 	}
 
 	@Test
@@ -81,11 +82,20 @@ public class BandTest {
 		List savedVenues = myBand.getVenues();
 		assertEquals(1, savedVenues.size());
 	}
+
+	@Test
+	public void update_updatesBandName_true() {
+		Band myBand = new Band("RAGE");
+		myBand.save();
+		myBand.update("name", "RAGE AGAINST THE MACHINE");
+		assertEquals("RAGE AGAINST THE MACHINE", Band.findBand(myBand.getId()).getName());
+	}
+
 	@Test
 	public void delete_deletesAllTasksAndCategoriesAssociations() {
-		Band myBand = new Band("Household chores");
+		Band myBand = new Band("RAGE");
 		myBand.save();
-		Venue myVenue = new Venue("Mow the lawn", "Burnsville");
+		Venue myVenue = new Venue("Excel Center", "St. Paul");
 		myVenue.save();
 		myBand.addVenue(myVenue);
 		myBand.delete();
